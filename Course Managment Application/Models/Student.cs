@@ -33,22 +33,24 @@ namespace Course_Managment_Application
                 }
             }
         }
-       
-        public void Count()
+
+        static Student()
         {
-            count = 100;
-        }
-        public void CountId()
-        {
+            count = 0;
             countId = 1;
-            Id = countId;
+            
+           
         }
+      
         public Student(string name, string surname, string groupNo)
         {
             
             Name = name;
             Surname = surname;
             GroupNo = groupNo;
+            Id = countId;
+            countId++;
+            count++;
         }
         public  string FullName()
         {

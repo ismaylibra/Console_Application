@@ -7,8 +7,10 @@ namespace Course_Managment_Application
     {
         static void Main(string[] args)
         {
+            
+            
 
-            Console.WriteLine(Enum.GetNames(typeof(Category)));
+            
         }
     }
 }
