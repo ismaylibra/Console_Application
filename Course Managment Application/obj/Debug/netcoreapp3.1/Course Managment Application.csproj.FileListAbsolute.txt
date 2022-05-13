@@ -1,0 +1,14 @@
+C:\Users\ASUS\Desktop\C# tasks\Course Managment Application\Course Managment Application\obj\Debug\netcoreapp3.1\Course Managment Application.csproj.AssemblyReference.cache
+C:\Users\ASUS\Desktop\C# tasks\Course Managment Application\Course Managment Application\obj\Debug\netcoreapp3.1\Course Managment Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\Desktop\C# tasks\Course Managment Application\Course Managment Application\obj\Debug\netcoreapp3.1\Course Managment Application.AssemblyInfoInputs.cache
+C:\Users\ASUS\Desktop\C# tasks\Course Managment Application\Course Managment Application\obj\Debug\netcoreapp3.1\Course Managment Application.AssemblyInfo.cs
+C:\Users\ASUS\Desktop\C# tasks\Course Managment Application\Course Managment Application\obj\Debug\netcoreapp3.1\Course Managment Application.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Desktop\C# tasks\Course Managment Application\Course Managment Application\bin\Debug\netcoreapp3.1\Course Managment Application.exe
+C:\Users\ASUS\Desktop\C# tasks\Course Managment Application\Course Managment Application\bin\Debug\netcoreapp3.1\Course Managment Application.deps.json
+C:\Users\ASUS\Desktop\C# tasks\Course Managment Application\Course Managment Application\bin\Debug\netcoreapp3.1\Course Managment Application.runtimeconfig.json
+C:\Users\ASUS\Desktop\C# tasks\Course Managment Application\Course Managment Application\bin\Debug\netcoreapp3.1\Course Managment Application.runtimeconfig.dev.json
+C:\Users\ASUS\Desktop\C# tasks\Course Managment Application\Course Managment Application\bin\Debug\netcoreapp3.1\Course Managment Application.dll
+C:\Users\ASUS\Desktop\C# tasks\Course Managment Application\Course Managment Application\bin\Debug\netcoreapp3.1\Course Managment Application.pdb
+C:\Users\ASUS\Desktop\C# tasks\Course Managment Application\Course Managment Application\obj\Debug\netcoreapp3.1\Course Managment Application.dll
+C:\Users\ASUS\Desktop\C# tasks\Course Managment Application\Course Managment Application\obj\Debug\netcoreapp3.1\Course Managment Application.pdb
+C:\Users\ASUS\Desktop\C# tasks\Course Managment Application\Course Managment Application\obj\Debug\netcoreapp3.1\Course Managment Application.genruntimeconfig.cache
