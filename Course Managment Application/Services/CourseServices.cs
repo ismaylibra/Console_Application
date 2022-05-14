@@ -12,17 +12,18 @@ namespace Course_Managment_Application.Services
     {
         List<Group> _groups = new List<Group>();
         List<Student> _students = new List<Student>();
-      public  List<Group> Groups => _groups;
+        public List<Group> Groups => _groups;
 
         public List<Student> Students => _students;
 
-        public void CreateGroup(string no, Category category)
+        public void CreateGroup(string no, Category category, bool isOnline)
         {
+            Group group = new Group(no, category,isOnline);
             if (string.IsNullOrEmpty(no)|| string.IsNullOrWhiteSpace(no))
             {
                 Console.WriteLine("Please, enter the  Group Nº .Group Nº can't be empty");
             }
-            Group group = new Group(no, category);
+            
             if (Group.Count==0)
             {
                 _groups.Add(group);
@@ -32,8 +33,7 @@ namespace Course_Managment_Application.Services
             {
                 if (group.No.ToLower().Trim() != existedGroup.No.ToLower().Trim())
                 {
-                    _groups.Add(group);
-                    Console.WriteLine($"{group.No} successfully created");
+                    Console.WriteLine("Group is created");
                 }
             }
             Console.WriteLine("Group can not create");
@@ -71,7 +71,7 @@ namespace Course_Managment_Application.Services
             }
         }
 
-        public void ShowListOfAllStudents(string no)
+        public void ShowListOfAllStudents()
         {
             if (Student.count>0)
             {
@@ -104,17 +104,20 @@ namespace Course_Managment_Application.Services
             }
         }
 
-        public void CreateStudent(string name, string surname, string groupNo)
+        public void CreateStudent(string name, string surname, string groupNo,byte point)
         {
+        
             if (Group.Count>0)
             {
-                if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name) || string.IsNullOrEmpty(surname) || string.IsNullOrWhiteSpace(surname) || string.IsNullOrEmpty(groupNo) || string.IsNullOrWhiteSpace(groupNo))
+                Student student = new Student(name,surname,groupNo,point);
+                if (string.IsNullOrEmpty(student.FullName()) || string.IsNullOrWhiteSpace(student.FullName()))
                 {
                     Console.WriteLine("Student can not created");
                 }
                 else
                 {
-                    Student student = new Student(name, surname, groupNo);
+                    
+                    
                     Console.WriteLine($"Name: {name} Surname: {surname} Group Number{groupNo}");
                     Students.Add(student);
                     Group group = new Group();

@@ -13,22 +13,40 @@ namespace Course_Managment_Application.Models
         byte _limit;
         public Category Categories;
         public static int Count;
+        public static int CountName;
         
        public  List<Student> StudentsList = new List<Student>();
         public Group()
         {
-
+            
         }
        
-        public Group(string no, Category category)
+        public Group(string no, Category category,bool isonline )
         {
             No = no;
-            IsOnline = false;
+            
             Categories = category;
             Count = 0;
+            IsOnline = isonline;
+            CountName = 1000;
+            CountName++;
             Count++;
-            
-          
+            switch (category)
+            {
+                case Category.Programming:
+                    No = $"P-" + CountName;
+                    break;
+                case Category.Design:
+                    No = $"D-" + CountName;
+                    break;
+                case Category.System_Administration:
+                    No = $"SA-" + CountName;
+                    break;
+                default:
+                    break;
+            }
+
+
         }
         public byte LimitChecking {
             get => _limit;

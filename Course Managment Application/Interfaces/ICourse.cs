@@ -10,13 +10,13 @@ namespace Course_Managment_Application.Interfaces
     {
         public List<Group> Groups { get;  }
         public List<Student> Students { get; }
-        public void CreateGroup(string no, Category category);
+        public void CreateGroup(string no, Category category, bool isOnline);
         public void EditGroup(string oldNumber, string newNumber);
         public void ShowListOfGroup(string no);
         
         public void ShowListofStudentsByGroup(string num);
-        public void ShowListOfAllStudents(string no);
-        public void CreateStudent(string name, string surname, string groupNo);
+        public void ShowListOfAllStudents();
+        public void CreateStudent(string name, string surname, string groupNo, byte point);
         public void RemoveStudent();
         
     }

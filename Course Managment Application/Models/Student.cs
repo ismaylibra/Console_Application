@@ -44,18 +44,19 @@ namespace Course_Managment_Application
              
         }
       
-        public Student(string name, string surname, string groupNo)
+        public Student(string name, string surname, string groupNo, byte point)
         {
             
             Name = name;
             Surname = surname;
             GroupNo = groupNo;
             Id = ++count;
+            CheckPoint = point;
             
         }
         public  string FullName()
         {
-            return $"Name: {Name} Surname: {Surname}";
+            return $"Name: {Name} Surname: {Surname} Group Number: {GroupNo}";
         }
       
         
