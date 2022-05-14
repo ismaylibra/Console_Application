@@ -7,10 +7,9 @@ namespace Course_Managment_Application
     {
         static void Main(string[] args)
         {
-            
-            
 
-            
+           
+
         }
     }
 }

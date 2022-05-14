@@ -36,10 +36,12 @@ namespace Course_Managment_Application
 
         static Student()
         {
-            count = 0;
-            countId = 1;
-            
+            count = 0; 
            
+        }
+        public Student()
+        {
+             
         }
       
         public Student(string name, string surname, string groupNo)
@@ -48,9 +50,8 @@ namespace Course_Managment_Application
             Name = name;
             Surname = surname;
             GroupNo = groupNo;
-            Id = countId;
-            countId++;
-            count++;
+            Id = ++count;
+            
         }
         public  string FullName()
         {

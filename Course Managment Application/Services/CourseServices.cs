@@ -11,13 +11,16 @@ namespace Course_Managment_Application.Services
     class CourseServices : ICourse
     {
         List<Group> _groups = new List<Group>();
-        public List<Group> Groups => _groups;
+        List<Student> _students = new List<Student>();
+      public  List<Group> Groups => _groups;
+
+        public List<Student> Students => _students;
 
         public void CreateGroup(string no, Category category)
         {
             if (string.IsNullOrEmpty(no)|| string.IsNullOrWhiteSpace(no))
             {
-                Console.WriteLine("Please, enter the Nº of Group. Nº of group can't be empty");
+                Console.WriteLine("Please, enter the  Group Nº .Group Nº can't be empty");
             }
             Group group = new Group(no, category);
             if (Group.Count==0)
@@ -35,26 +38,122 @@ namespace Course_Managment_Application.Services
             }
             Console.WriteLine("Group can not create");
         }
-
-
-        public void EditGroup()
+        public Group FindGroup(string no)
         {
-            throw new NotImplementedException();
+            foreach (Group groups in Groups)
+            {
+                if (groups.No.ToLower().Trim()== no.ToLower().Trim())
+                {
+                    return groups;
+                }
+            }
+            return null;
         }
 
-        public void ShowListOfAllStudents()
+        public void EditGroup(string oldNumber, string newNumber)
         {
-            throw new NotImplementedException();
+            if (FindGroup(newNumber) == null)
+            {
+                Group group = FindGroup(oldNumber);
+                if (group != null)
+                {
+                    group.No = newNumber.ToLower().Trim();
+                    Console.WriteLine($"{group.No} successfully created");
+                }
+                else
+                {
+                    Console.WriteLine($"There is no group {oldNumber.ToUpper()}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"There is a group {newNumber.ToUpper()}");
+            }
         }
 
-        public void ShowListOfGroup()
+        public void ShowListOfAllStudents(string no)
         {
-            throw new NotImplementedException();
+            if (Student.count>0)
+            {
+                foreach (Student students in Students)
+                {
+                    Console.WriteLine(students);
+                }
+            }
+            else
+            {
+                Console.WriteLine("There is no student");
+            }
         }
 
-        public void ShowListofStudentsByGroup()
+       
+
+        public void ShowListofStudentsByGroup(string num)
         {
-            throw new NotImplementedException();
+            Group group = FindGroup(num);
+            if (group == null)
+            {
+                foreach (Student students in group.StudentsList)
+                {
+                    Console.WriteLine(students);
+                }
+            }
+            else
+            {
+                Console.WriteLine("There is no Student in Group");
+            }
+        }
+
+        public void CreateStudent(string name, string surname, string groupNo)
+        {
+            if (Group.Count>0)
+            {
+                if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name) || string.IsNullOrEmpty(surname) || string.IsNullOrWhiteSpace(surname) || string.IsNullOrEmpty(groupNo) || string.IsNullOrWhiteSpace(groupNo))
+                {
+                    Console.WriteLine("Student can not created");
+                }
+                else
+                {
+                    Student student = new Student(name, surname, groupNo);
+                    Console.WriteLine($"Name: {name} Surname: {surname} Group Number{groupNo}");
+                    Students.Add(student);
+                    Group group = new Group();
+                    group.StudentsList.Add(student);
+                }
+            }
+            else
+            {
+                Console.WriteLine("You can not add student in group. Because this group is not found");
+            }
+        }
+      
+
+        public void RemoveStudent()
+        { Student student = new Student();
+            if (student==null)
+            {
+                Console.WriteLine("This student is not found");
+            }
+            else
+            {
+
+                _students.Remove(student);
+            }
+        }
+
+        public void ShowListOfGroup(string no)
+        {
+            if (Group.Count > 0)
+            {
+                foreach (Group groups in Groups)
+                {
+                    Console.WriteLine(groups);
+                }
+            }
+            else
+            {
+                Console.WriteLine("There is no group");
+            }
         }
     }
 }

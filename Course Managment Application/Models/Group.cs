@@ -13,7 +13,12 @@ namespace Course_Managment_Application.Models
         byte _limit;
         public Category Categories;
         public static int Count;
-        List<Student> _studentsList = new List<Student>();
+        
+       public  List<Student> StudentsList = new List<Student>();
+        public Group()
+        {
+
+        }
        
         public Group(string no, Category category)
         {
@@ -25,35 +30,35 @@ namespace Course_Managment_Application.Models
             
           
         }
-        public List<Student> LimitChecking {
-            get => _studentsList;
+        public byte LimitChecking {
+            get => _limit;
             set
             {
                 if (!IsOnline)
                 {
                     _limit = 15;
-                    _studentsList = new List<Student>(_limit);
+                    StudentsList = new List<Student>(_limit);
                     Console.WriteLine("Limit of online group is 15");
                     
                 }
                 else if (IsOnline)
                 {
                     _limit = 10;
-                    _studentsList = new List<Student>(_limit);
+                    StudentsList = new List<Student>(_limit);
                     Console.WriteLine("Limit of offline group is 10");
                 }
             }
             }
        public  void StudentShow()
         {
-            foreach (Student student in _studentsList)
+            foreach (Student student in StudentsList)
             {
                 Console.WriteLine(student);
             }
         }
         public void StudentInfo()
         {
-            foreach (Student students in _studentsList)
+            foreach (Student students in StudentsList)
             {
                 Console.WriteLine($"Name and Surname: {students.FullName()} \nStudent ID: {students.Id} Category: {Categories} \nIs Guaranteed : {students.CheckPoint} \nIs Online: {LimitChecking}");
                 
