@@ -10,15 +10,16 @@ namespace Course_Managment_Application.Models
     {
         public string No;
         public bool IsOnline;
-        byte _limit;
+        public byte _limit;
+        public int Limit;
         public Category Categories;
         public static int Count;
         public static int CountName;
 
-        public List<Student> StudentsList;
+        public List<Student> StudentsList = new List<Student>();
         public Group()
         {
-            StudentsList = new List<Student>();
+            //StudentsList = new List<Student>();
         }
 
         static Group()
@@ -29,15 +30,12 @@ namespace Course_Managment_Application.Models
         }
         public Group(Category category, bool isonline)
         {
-
-
             Categories = category;
-
             IsOnline = isonline;
             ++Count;
             CountName++;
             Count++;
-            
+            Limit = isonline ? 2 : 3;
 
             switch (category)
             {
@@ -57,22 +55,38 @@ namespace Course_Managment_Application.Models
 
         }
         public byte LimitChecking
-        {  
+        {
             get => _limit;
             set
             {
                 if (!IsOnline)
                 {
-                    _limit = 15;
-                    StudentsList = new List<Student>(_limit);
-                    Console.WriteLine("Limit of online group is 15");
+                    _limit = 2;
+                    if (_limit <= 3)
+                    {
+                        //StudentsList = new List<Student>(_limit);
+                        //Console.WriteLine("Limit of online group is 15");
+                    }
+                    else
+                    {
+                        //Console.WriteLine("you cant create than 3");
+                    }
+
 
                 }
                 else if (IsOnline)
                 {
-                    _limit = 10;
-                    StudentsList = new List<Student>(_limit);
-                    Console.WriteLine("Limit of offline group is 10");
+                    //if (_limit<=10)
+                    //{
+
+                    //    StudentsList = new List<Student>(_limit);
+                    //    Console.WriteLine("Limit of offline group is 10");
+                    //}
+                    //else
+                    //{
+                    //    Console.WriteLine("you cant create than 10");
+                    //}
+                    _limit = 3;
                 }
             }
         }
@@ -83,7 +97,7 @@ namespace Course_Managment_Application.Models
                 Console.WriteLine(student);
             }
         }
-       
+
 
         public override string ToString()
         {

@@ -86,18 +86,8 @@ namespace Course_Managment_Application.Services
             Console.WriteLine("Enter Your Entry Point");
             byte point = Convert.ToByte(Console.ReadLine());
             courseService.CreateStudent(name,surname,groupNum,point);
-        }
-        //public static Student RemoveStudentMenu()
-        //{
-        //    //foreach (Student students in courseService.Students )
-        //    //{
-        //    //    if (students.No.ToLower().Trim() == no.ToLower().Trim())
-        //    //    {
-        //    //        return groups;
-        //    //    }
-        //    //}
-        //    //return null;
-        //}
+       }
+       
 
         public static void RemoveStudentMenu()
         {

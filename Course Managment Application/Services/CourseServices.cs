@@ -11,9 +11,12 @@ namespace Course_Managment_Application.Services
     class CourseServices : ICourse
     {
         List<Group> _groups = new List<Group>();
+
         List<Student> _students = new List<Student>();
         public List<Group> Groups => _groups;
         public List<Student> Students => _students;
+
+
 
         public void CreateGroup(Category category, bool isOnline)
         {
@@ -21,58 +24,6 @@ namespace Course_Managment_Application.Services
             Group group = new Group(category, isOnline);
             _groups.Add(group);
             Console.WriteLine(group);
-
-            //if (string.IsNullOrEmpty(no) || string.IsNullOrWhiteSpace(no))
-            //{
-            //    Console.WriteLine("Please, enter the  Group Nº .Group Nº can't be empty");
-
-
-            //}
-
-            //if (_groups.Count > 0)
-            //{
-
-            //    foreach (Group group1 in _groups)
-            //    {
-            //        if (group1 == group)
-            //        {
-            //            Console.WriteLine("Alrady Exsist");
-            //        return;
-
-            //        }
-            //    }
-            //}
-
-
-
-
-
-
-            //Console.WriteLine(" successfully created");
-
-
-            //if (Group.Count >= 0)
-            //{
-            //    _groups.Add(group);
-            //    Console.WriteLine(Group.CountName);
-            //    Console.WriteLine(" successfully created");
-            //}
-            //else if (Group.Count != 0)
-            //{
-            //    foreach (Group existedGroup in Groups)
-            //    {
-            //        if (group.No.ToLower().Trim() != existedGroup.No.ToLower().Trim())
-            //        {
-            //            _groups.Add(group);
-            //            Console.WriteLine("created");
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine("Group already created");
-            //        }
-            //    }
-            //}
-
 
         }
         public Group FindGroup(string no)
@@ -130,7 +81,7 @@ namespace Course_Managment_Application.Services
             Group group = FindGroup(num);
             if (group != null)
             {
-                foreach (Student students in _students)
+                foreach (Student students in group.StudentsList)
                 {
                     Console.WriteLine(students);
                 }
@@ -144,8 +95,10 @@ namespace Course_Managment_Application.Services
         public void CreateStudent(string name, string surname, string groupNo, byte point)
         {
 
+
             if (Group.Count > 0)
             {
+
                 Student student = new Student(name, surname, groupNo, point);
                 if (string.IsNullOrEmpty(student.FullName()) || string.IsNullOrWhiteSpace(student.FullName()))
                 {
@@ -153,11 +106,24 @@ namespace Course_Managment_Application.Services
                 }
                 else
                 {
+                    //Group group = _groups.Find(x => x.No == groupNo);
+                    Group group = GetGroup(groupNo);
 
+                    if (group == null)
+                    {
+                        Console.WriteLine("Group not found");
+                        return;
+                    }
 
+                    if (group.StudentsList.Count >= group.Limit)
+                    {
+                        Console.WriteLine("olmaz");
+                        return;
+                    }
                     Console.WriteLine($"Name: {name} Surname: {surname} Group Number{groupNo}");
-                    Students.Add(student);
-                    Group group = new Group();
+
+                  
+                    //group.StudentsList = new List<Student>();
                     group.StudentsList.Add(student);
                 }
             }
@@ -168,22 +134,34 @@ namespace Course_Managment_Application.Services
         }
 
 
+        Group GetGroup(string groupNo)
+        {
+            foreach (Group group in _groups)
+            {
+                if (group.No==groupNo)
+                {
+                    return group;
+                }
+            }
+            return null;
+        }
         public void RemoveStudent(string name, string surname, string groupnum)
         {
-            foreach (Student students in _students )
+            foreach (Student students in _students)
             {
                 _students.Remove(students);
+                break;
             }
 
         }
 
         public void ShowListOfGroup()
-        { 
-                foreach (Group groups in Groups)
-                {
-                    Console.WriteLine(groups);
-                }
-            
+        {
+            foreach (Group groups in Groups)
+            {
+                Console.WriteLine(groups);
+            }
+
         }
     }
 }
