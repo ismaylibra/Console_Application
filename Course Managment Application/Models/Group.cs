@@ -8,7 +8,7 @@ namespace Course_Managment_Application.Models
 {
     class Group
     {
-        public string No;
+        public  string No;
         public bool IsOnline;
         byte _limit;
         public Category Categories;
@@ -24,23 +24,23 @@ namespace Course_Managment_Application.Models
         public Group(string no, Category category,bool isonline )
         {
             No = no;
-            
+
             Categories = category;
             Count = 0;
             IsOnline = isonline;
-            CountName = 1000;
+            Count++;
             CountName++;
             Count++;
             switch (category)
             {
                 case Category.Programming:
-                    No = $"P-" + CountName;
+                    No = $"P-" + No;
                     break;
                 case Category.Design:
-                    No = $"D-" + CountName;
+                    No = $"D-" + No;
                     break;
                 case Category.System_Administration:
-                    No = $"SA-" + CountName;
+                    No = $"SA-" + No;
                     break;
                 default:
                     break;

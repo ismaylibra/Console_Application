@@ -18,25 +18,36 @@ namespace Course_Managment_Application.Services
 
         public void CreateGroup(string no, Category category, bool isOnline)
         {
-            Group group = new Group(no, category,isOnline);
-            if (string.IsNullOrEmpty(no)|| string.IsNullOrWhiteSpace(no))
+            
+            if (string.IsNullOrEmpty(no) || string.IsNullOrWhiteSpace(no))
             {
                 Console.WriteLine("Please, enter the  Group Nº .Group Nº can't be empty");
+
+
             }
-            
-            if (Group.Count==0)
+            Group group = new Group(no, category, isOnline);
+            if (Group.Count >= 0)
             {
                 _groups.Add(group);
-                Console.WriteLine($"{group.No} successfully created");
+                Console.WriteLine(" successfully created"); 
             }
-            foreach (Group existedGroup in Groups)
+            else if(Group.Count!=0)
             {
-                if (group.No.ToLower().Trim() != existedGroup.No.ToLower().Trim())
+                foreach (Group existedGroup in Groups)
                 {
-                    Console.WriteLine("Group is created");
+                    if (group.No.ToLower().Trim() != existedGroup.No.ToLower().Trim())
+                    {
+                        _groups.Add(group);
+                        Console.WriteLine("created");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Group already created");
+                    }
                 }
             }
-            Console.WriteLine("Group can not create");
+            
+            
         }
         public Group FindGroup(string no)
         {

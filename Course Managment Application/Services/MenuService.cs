@@ -18,15 +18,19 @@ namespace Course_Managment_Application.Services
             string answer;
             bool resultOnline;
             
-            if (group.IsOnline)
-            {
+           
 
-            }
-            
             Console.WriteLine("Please, Enter The Group Number");
             groupNo = Console.ReadLine();
             Console.WriteLine("Please, Enter Which Category Do You Want To Study ");
-            bool resultCategory = Enum.TryParse(typeof(Category),Console.ReadLine(), out category);
+            
+
+            foreach (var item in Enum.GetValues(typeof(Category)))
+            {
+                Console.WriteLine($"{(int)item}. {item}");
+            }
+            bool resultCategory = Enum.TryParse(typeof(Category), Console.ReadLine(), out category);
+
             Console.WriteLine("is it Group online");
             answer = Console.ReadLine();
 
@@ -46,7 +50,7 @@ namespace Course_Managment_Application.Services
             }
             if (resultCategory)
             {
-                courseService.CreateGroup(groupNo, (Category)category,group.IsOnline);
+                courseService.CreateGroup(groupNo,(Category)category,group.IsOnline);
             }
             
 
