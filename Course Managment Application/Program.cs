@@ -14,10 +14,10 @@ namespace Course_Managment_Application
             do
             {
                 Console.WriteLine("1.Create a New Group");
-                Console.WriteLine("2.Show List Of All Groups in Course");
-                Console.WriteLine("3.Group Editing");
+                Console.WriteLine("2.Group Editing");
+                Console.WriteLine("3.Show List Of All Students in Course");
                 Console.WriteLine("4.Show List Of Students in Group");
-                Console.WriteLine("5.Show List Of All Students in Course");
+                Console.WriteLine("5.Show List Of All Groups in Course");
                 Console.WriteLine("6.Add New Student");
                 Console.WriteLine("7.Remove Student");
                 Console.WriteLine("0.Exit");
@@ -30,6 +30,24 @@ namespace Course_Managment_Application
                     {
                         case 1:
                             MenuService.CreateGroupMenu();
+                            break;
+                        case 2:
+                            MenuService.EditGroupMenu();
+                            break;
+                        case 3:
+                            MenuService.ShowListOfAllStudentsMenu();
+                            break;
+                        case 4:
+                            MenuService.ShowListofStudentsByGroupMenu();
+                            break;
+                        case 5:
+                            MenuService.ShowListOfGroupMenu();
+                            break;
+                        case 6:
+                            MenuService.CreateStudentMenu();
+                            break;
+                        case 7:
+                            MenuService.RemoveStudentMenu();
                             break;
                             
                         default:

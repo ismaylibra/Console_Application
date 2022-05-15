@@ -6,13 +6,13 @@ namespace Course_Managment_Application
 {
     class Student
     {
-        public int Id;
+        public uint Id;
         public string Name;
         public string Surname;
         public string GroupNo;
         byte _point;
         bool _guaranteed;
-        public static int count;
+        public static uint count;
         public static int countId;
         public byte CheckPoint
         {
@@ -21,7 +21,7 @@ namespace Course_Managment_Application
             {
                 if (value>80)
                 {
-                    Console.WriteLine("You are a guaranteed student ");
+                    Console.WriteLine("You are a guaranteed student  ");
                     _point = value;
                     _guaranteed = true;
                 }
@@ -36,7 +36,7 @@ namespace Course_Managment_Application
 
         static Student()
         {
-            count = 0; 
+            count = default; 
            
         }
         public Student()
@@ -56,12 +56,15 @@ namespace Course_Managment_Application
         }
         public  string FullName()
         {
-            return $"Name: {Name} Surname: {Surname} Group Number: {GroupNo}";
+            return $"Name: {Name} Surname: {Surname}";
         }
-      
         
-        
-        
+        public override string ToString()
+        {
+            return $"Student Info {FullName()}\n Group No: {GroupNo} \n Is Guarantee: {CheckPoint}  {_guaranteed} \nIs Online {CheckPoint} ";
+        }
+
+
 
     }
 

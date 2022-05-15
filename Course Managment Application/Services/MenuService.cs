@@ -13,15 +13,14 @@ namespace Course_Managment_Application.Services
         public static void CreateGroupMenu()
         {
             Group group = new Group();
-            string groupNo;
+            //string groupNo;
             object category;
-            string answer;
-            bool resultOnline;
-            
+            byte answer;
            
 
-            Console.WriteLine("Please, Enter The Group Number");
-            groupNo = Console.ReadLine();
+
+            //Console.WriteLine("Please, Enter The Group Number");
+            //groupNo = Console.ReadLine();
             Console.WriteLine("Please, Enter Which Category Do You Want To Study ");
             
 
@@ -32,29 +31,84 @@ namespace Course_Managment_Application.Services
             bool resultCategory = Enum.TryParse(typeof(Category), Console.ReadLine(), out category);
 
             Console.WriteLine("is it Group online");
-            answer = Console.ReadLine();
+            Console.WriteLine("1.Yes \n2.No");
+            answer = Convert.ToByte(Console.ReadLine());
 
-            if(answer.ToLower().Trim() == "yes")
+            if (answer == 1)
             {
-                resultOnline = true;
-                group.IsOnline = resultOnline;
+                
+                group.IsOnline = true;
             }
-            else if (answer.ToLower().Trim() == "no")
+            else if (answer==2)
             {
-                resultOnline = false;
-                group.IsOnline = resultOnline;
+                
+                group.IsOnline = false;
             }
-            else
-            {
-                Console.WriteLine("Enter only yes or not fuck you");
-            }
+           
             if (resultCategory)
             {
-                courseService.CreateGroup(groupNo,(Category)category,group.IsOnline);
+                courseService.CreateGroup((Category)category,group.IsOnline);
             }
             
 
 
         }
-    }
+        public static void EditGroupMenu()
+        {
+            Console.WriteLine("Please, enter Group No");
+            string num = Console.ReadLine();
+            Console.WriteLine("Please, enter New Group No");
+            string newNum = Console.ReadLine();
+            courseService.EditGroup(num, newNum);
+        }
+        public static void ShowListOfAllStudentsMenu()
+        {
+            courseService.ShowListOfAllStudents();
+        }
+        public static void ShowListofStudentsByGroupMenu()
+        {
+            Console.WriteLine("Enter Group Number");
+            string groupNumber = Console.ReadLine();
+            courseService.ShowListofStudentsByGroup(groupNumber);
+        }
+        public static void ShowListOfGroupMenu()
+        {
+            courseService.ShowListOfGroup();
+        }
+        public static void CreateStudentMenu()
+        {
+            Console.WriteLine("Enter the Name");
+            string name = Console.ReadLine();
+            Console.WriteLine("Enter the Surname");
+            string surname = Console.ReadLine();
+            Console.WriteLine("Enter the Group Number");
+            string groupNum = Console.ReadLine();
+            Console.WriteLine("Enter Your Entry Point");
+            byte point = Convert.ToByte(Console.ReadLine());
+            courseService.CreateStudent(name,surname,groupNum,point);
+        }
+        //public static Student RemoveStudentMenu()
+        //{
+        //    //foreach (Student students in courseService.Students )
+        //    //{
+        //    //    if (students.No.ToLower().Trim() == no.ToLower().Trim())
+        //    //    {
+        //    //        return groups;
+        //    //    }
+        //    //}
+        //    //return null;
+        //}
+
+        public static void RemoveStudentMenu()
+        {
+            Console.WriteLine("Please , enter name");
+            string name = Console.ReadLine();
+            Console.WriteLine("Please, enter surname");
+            string surname = Console.ReadLine();
+            Console.WriteLine("Please, Enter group num");
+            string groupnum = Console.ReadLine();
+
+            courseService.RemoveStudent(name, surname,groupnum);
+        }
+    } 
 }
