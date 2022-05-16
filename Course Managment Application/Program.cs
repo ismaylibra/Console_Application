@@ -29,7 +29,7 @@ namespace Course_Managment_Application
                     switch (choice)
                     {
                         case 1:
-                            MenuService.CreateGroupMenu();
+                            MenuService.CreateGroupMenu(); 
                             break;
                         case 2:
                             MenuService.EditGroupMenu();
@@ -48,6 +48,9 @@ namespace Course_Managment_Application
                             break;
                         case 7:
                             MenuService.RemoveStudentMenu();
+                            break;
+                        case 0:
+                            Console.WriteLine("END OF THE APPLICATION");
                             break;
                             
                         default:

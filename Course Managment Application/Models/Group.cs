@@ -34,7 +34,7 @@ namespace Course_Managment_Application.Models
             CountName++;
             Count++;
             Limit = isOnline ? 15 : 10;
-
+            
             switch (category)
             {
                 case Category.Programming:
