@@ -69,15 +69,29 @@ namespace Course_Managment_Application.Services
             courseService.ShowListOfGroup();
         }
         public static void CreateStudentMenu()
-        {
-            Console.WriteLine("Enter the Name");
-            string name = Console.ReadLine();
-            Console.WriteLine("Enter the Surname");
-            string surname = Console.ReadLine();
-            Console.WriteLine("Enter the Group Number");
-            string groupNum = Console.ReadLine();
+        { string name;
+          string surname;
+          string groupNum;
+          byte point;
+            do
+            {
+                Console.WriteLine("Enter the Name");
+                name = Console.ReadLine();
+               
+            } while (string.IsNullOrEmpty(name)||string.IsNullOrWhiteSpace(name));
+            do
+            {
+                Console.WriteLine("Enter the Surname");
+                surname = Console.ReadLine();
+            } while (string.IsNullOrEmpty(surname) || string.IsNullOrWhiteSpace(surname));
+            do
+            {
+                Console.WriteLine("Enter the Group Number");
+                groupNum = Console.ReadLine();
+            } while (string.IsNullOrEmpty(groupNum) || string.IsNullOrWhiteSpace(groupNum));
+            
             Console.WriteLine("Enter Your Entry Point");
-            byte point = Convert.ToByte(Console.ReadLine());
+            bool resultPoint = byte.TryParse(Console.ReadLine(), out point);
             courseService.CreateStudent(name, surname, groupNum, point);
 
 

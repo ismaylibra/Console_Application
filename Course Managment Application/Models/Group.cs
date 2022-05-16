@@ -31,7 +31,6 @@ namespace Course_Managment_Application.Models
         {
             Categories = category;
             IsOnline = isOnline;
-            ++Count;
             CountName++;
             Count++;
             Limit = isOnline ? 15 : 10;
