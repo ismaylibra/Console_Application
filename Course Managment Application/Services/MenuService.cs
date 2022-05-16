@@ -86,7 +86,13 @@ namespace Course_Managment_Application.Services
             } while (string.IsNullOrEmpty(surname) || string.IsNullOrWhiteSpace(surname));
             do
             {
-                Console.WriteLine("Enter the Group Number");
+                Console.WriteLine("Groups in the Course");
+                foreach (Group groups in courseService.Groups)
+                {    
+                    
+                    Console.WriteLine($"\nGroup Number: {groups.No} \nCategory: {groups.Categories}  \nIs Online: {groups.IsOnline}");
+                }
+                Console.WriteLine("\nEnter the Group Number");
                 groupNum = Console.ReadLine();
             } while (string.IsNullOrEmpty(groupNum) || string.IsNullOrWhiteSpace(groupNum));
             

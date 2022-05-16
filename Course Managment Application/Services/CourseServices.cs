@@ -120,7 +120,7 @@ namespace Course_Managment_Application.Services
                         Console.WriteLine($"You can not add this student. Because limit is  {group.Limit} ");
                         return;
                     }
-                    Console.WriteLine($"Name: {name} Surname: {surname} Group Number{groupNo}");
+                    Console.WriteLine($"Name: {name} Surname: {surname} Group Number: {groupNo} Student ID: {student.Id} ");
 
                   
                     group.StudentsList.Add(student);

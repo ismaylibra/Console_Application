@@ -67,9 +67,9 @@ namespace Course_Managment_Application.Models
         {
             if (IsOnline==true)
             {
-                return $"Group No: {No} Category: {Categories} This  Group is Online";
+                return $"\nGroup No: {No} \nCategory: {Categories} \nThis  Group is Online";
             }
-            return $"Group No: {No} Category: {Categories} This Group is Offline";
+            return $"\nGroup No: {No} \nCategory: {Categories} \nThis Group is Offline";
         }
 
     }

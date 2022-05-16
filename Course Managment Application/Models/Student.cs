@@ -61,7 +61,7 @@ namespace Course_Managment_Application
         
         public override string ToString()
         {
-            return $"Student Info {FullName()}\n Group No: {GroupNo} \n Is Guarantee: {CheckPoint}  {_guaranteed} \nIs Online {CheckPoint} \nStudent ID: {Id} ";
+            return $"\nStudent Info {FullName()}\n Group No: {GroupNo} \n Is Guarantee: {CheckPoint}  {_guaranteed} \nIs Online {CheckPoint} \nStudent ID: {Id} ";
         }
 
 
