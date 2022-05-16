@@ -58,24 +58,24 @@ namespace Course_Managment_Application.Services
                 Console.WriteLine($"There is already exist {newNumber.ToUpper()}");
             }
         }
-
         public void ShowListOfAllStudents()
         {
             if (Student.count > 0)
             {
-                foreach (Student students in Students)
+                foreach (Group group in Groups)
                 {
-                    Console.WriteLine(students);
+                    foreach (Student students in group.StudentsList)
+                    {
+                        Console.WriteLine($"Name and Surname: { students.FullName()} Group No: { students.GroupNo} Student ID: {students.Id} \nGuarantee Type: {students.CheckPoint}");
+                    }
                 }
+                
             }
             else
             {
                 Console.WriteLine("There is no student");
             }
         }
-
-
-
         public void ShowListofStudentsByGroup(string num)
         {
             Group group = FindGroup(num);
@@ -106,8 +106,8 @@ namespace Course_Managment_Application.Services
                 }
                 else
                 {
-                    //Group group = _groups.Find(x => x.No == groupNo);
-                    Group group = GetGroup(groupNo);
+                  
+                    Group group = FindGroup(groupNo);
 
                     if (group == null)
                     {
@@ -117,13 +117,12 @@ namespace Course_Managment_Application.Services
 
                     if (group.StudentsList.Count >= group.Limit)
                     {
-                        Console.WriteLine("olmaz");
+                        Console.WriteLine($"You can not add this student. Because limit is  {group.Limit} ");
                         return;
                     }
                     Console.WriteLine($"Name: {name} Surname: {surname} Group Number{groupNo}");
 
                   
-                    //group.StudentsList = new List<Student>();
                     group.StudentsList.Add(student);
                 }
             }
@@ -133,26 +132,28 @@ namespace Course_Managment_Application.Services
             }
         }
 
-
-        Group GetGroup(string groupNo)
+        public void RemoveStudent(int id, string groupnum)
         {
-            foreach (Group group in _groups)
+            Group group = FindGroup(groupnum);
+            if (group==null)
             {
-                if (group.No==groupNo)
+                Console.WriteLine("Group not found");
+            }
+            if (group.StudentsList.Count==0)
+            {
+                Console.WriteLine("Student  not found");
+            }
+            foreach (var item in group.StudentsList)
+            {
+                if (item.Id==id)
                 {
-                    return group;
+                    group.StudentsList.Remove(item);
+                    Console.WriteLine("Student is removed");
+                    return;
                 }
-            }
-            return null;
-        }
-        public void RemoveStudent(string name, string surname, string groupnum)
-        {
-            foreach (Student students in _students)
-            {
-                _students.Remove(students);
-                break;
-            }
 
+            }
+            Console.WriteLine($"Student is not found with this {id}");
         }
 
         public void ShowListOfGroup()

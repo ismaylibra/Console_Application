@@ -13,16 +13,9 @@ namespace Course_Managment_Application.Services
         public static void CreateGroupMenu()
         {
             Group group = new Group();
-            //string groupNo;
             object category;
             byte answer;
-           
-
-
-            //Console.WriteLine("Please, Enter The Group Number");
-            //groupNo = Console.ReadLine();
             Console.WriteLine("Please, Enter Which Category Do You Want To Study ");
-            
 
             foreach (var item in Enum.GetValues(typeof(Category)))
             {
@@ -85,20 +78,20 @@ namespace Course_Managment_Application.Services
             string groupNum = Console.ReadLine();
             Console.WriteLine("Enter Your Entry Point");
             byte point = Convert.ToByte(Console.ReadLine());
-            courseService.CreateStudent(name,surname,groupNum,point);
-       }
-       
+            courseService.CreateStudent(name, surname, groupNum, point);
+
+
+        }
+
 
         public static void RemoveStudentMenu()
         {
-            Console.WriteLine("Please , enter name");
-            string name = Console.ReadLine();
-            Console.WriteLine("Please, enter surname");
-            string surname = Console.ReadLine();
+            Console.WriteLine("Please enter student id");
+            Student.countId = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Please, Enter group num");
             string groupnum = Console.ReadLine();
 
-            courseService.RemoveStudent(name, surname,groupnum);
+            courseService.RemoveStudent(Student.countId, groupnum);
         }
-    } 
+    }
 }

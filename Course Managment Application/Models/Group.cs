@@ -10,7 +10,6 @@ namespace Course_Managment_Application.Models
     {
         public string No;
         public bool IsOnline;
-        public byte _limit;
         public int Limit;
         public Category Categories;
         public static int Count;
@@ -19,7 +18,7 @@ namespace Course_Managment_Application.Models
         public List<Student> StudentsList = new List<Student>();
         public Group()
         {
-            //StudentsList = new List<Student>();
+            
         }
 
         static Group()
@@ -28,14 +27,14 @@ namespace Course_Managment_Application.Models
             CountName = 1000;
 
         }
-        public Group(Category category, bool isonline)
+        public Group(Category category, bool isOnline)
         {
             Categories = category;
-            IsOnline = isonline;
+            IsOnline = isOnline;
             ++Count;
             CountName++;
             Count++;
-            Limit = isonline ? 2 : 3;
+            Limit = isOnline ? 15 : 10;
 
             switch (category)
             {
@@ -54,42 +53,8 @@ namespace Course_Managment_Application.Models
 
 
         }
-        public byte LimitChecking
-        {
-            get => _limit;
-            set
-            {
-                if (!IsOnline)
-                {
-                    _limit = 2;
-                    if (_limit <= 3)
-                    {
-                        //StudentsList = new List<Student>(_limit);
-                        //Console.WriteLine("Limit of online group is 15");
-                    }
-                    else
-                    {
-                        //Console.WriteLine("you cant create than 3");
-                    }
-
-
-                }
-                else if (IsOnline)
-                {
-                    //if (_limit<=10)
-                    //{
-
-                    //    StudentsList = new List<Student>(_limit);
-                    //    Console.WriteLine("Limit of offline group is 10");
-                    //}
-                    //else
-                    //{
-                    //    Console.WriteLine("you cant create than 10");
-                    //}
-                    _limit = 3;
-                }
-            }
-        }
+       
+       
         public void StudentShow()
         {
             foreach (Student student in StudentsList)
@@ -101,7 +66,11 @@ namespace Course_Managment_Application.Models
 
         public override string ToString()
         {
-            return $"{No},{Categories}";
+            if (IsOnline==true)
+            {
+                return $"Group No: {No} Category: {Categories} This  Group is Online";
+            }
+            return $"Group No: {No} Category: {Categories} This Group is Offline";
         }
 
     }

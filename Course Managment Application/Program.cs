@@ -51,6 +51,7 @@ namespace Course_Managment_Application
                             break;
                             
                         default:
+                            Console.WriteLine("Incorrect Format");
                             break;
                     }
                 }

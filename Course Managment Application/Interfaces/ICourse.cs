@@ -17,7 +17,7 @@ namespace Course_Managment_Application.Interfaces
         public void ShowListofStudentsByGroup(string num);
         public void ShowListOfAllStudents();
         public void CreateStudent(string name, string surname, string groupNo, byte point);
-        public void RemoveStudent(string name, string surname, string groupnum);
+        public void RemoveStudent(int id, string groupnum);
         
     }
 }
