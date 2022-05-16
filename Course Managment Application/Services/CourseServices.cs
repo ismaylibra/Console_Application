@@ -79,7 +79,12 @@ namespace Course_Managment_Application.Services
         public void ShowListofStudentsByGroup(string num)
         {
             Group group = FindGroup(num);
+            foreach (Group item in Groups)
+            {
+                Console.WriteLine($"\nGroup Number: {item.No} \nCategory: {item.Categories} ");
+            }
             if (group != null)
+             
             {
                 foreach (Student students in group.StudentsList)
                 {
