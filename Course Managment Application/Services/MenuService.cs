@@ -95,9 +95,9 @@ namespace Course_Managment_Application.Services
                 Console.WriteLine("\nEnter the Group Number");
                 groupNum = Console.ReadLine();
             } while (string.IsNullOrEmpty(groupNum) || string.IsNullOrWhiteSpace(groupNum));
-            
             Console.WriteLine("Enter Your Entry Point");
             bool resultPoint = byte.TryParse(Console.ReadLine(), out point);
+           
             courseService.CreateStudent(name, surname, groupNum, point);
 
 
